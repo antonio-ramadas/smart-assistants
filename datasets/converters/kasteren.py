@@ -75,7 +75,7 @@ def format_sensor_data(raw_sensor_data, sensors):
 def write_sensor_data_csv(house, sensor_data):
     data=DataFrame(sensor_data, columns=["timestamp", "sensor", "value"])
     data=data.set_index("timestamp")
-    data=data.sort()
+    data=data.sort_index()
     data.to_csv("%s.csv"%house)
 
 

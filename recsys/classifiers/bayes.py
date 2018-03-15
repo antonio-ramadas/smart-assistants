@@ -57,7 +57,7 @@ class NaiveBayesClassifier(BaseClassifier):
             counts_per_setting += 1
             #normalize the counts per sensor
             normalize = lambda counts_per_sensor: counts_per_sensor.div(counts_per_sensor.sum(axis=1), axis=0)
-            normalized_counts = counts_per_setting.groupby(lambda (sensor, value): sensor, axis=1).transform(normalize)
+            normalized_counts = counts_per_setting.groupby(lambda (sensor, value): sensor, axis=1).apply(normalize)
 
             #convert to dictionary of numpy arrays for faster calculations later on
             normalized_counts = {setting: normalized_counts[setting].values for setting in normalized_counts.columns}

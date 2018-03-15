@@ -183,7 +183,7 @@ def convert_timedeltas(timedelta_data):
     @param original: The original dataset with numpy timedeltas.
     @return: The dataset with timedeltas replaced
     """
-    nanoseconds_to_seconds = lambda ts: int(ts.item()/(1000.0*1000.0*1000.0))
+    nanoseconds_to_seconds = lambda ts: ts.seconds#int(ts.item()/(1000.0*1000.0*1000.0))
     is_missing = lambda ts: str(ts) == "NaT"
     convert_timedelta = lambda ts: numpy.nan if is_missing(ts) else nanoseconds_to_seconds(ts)
 

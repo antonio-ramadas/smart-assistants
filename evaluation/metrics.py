@@ -222,7 +222,7 @@ class QualityMetricsCalculator():
         metrics = pandas.concat([self.calculate_for_action(action) for action in actions])
 
         #count for each action how often the corresponding action actually occurred
-        occurrences = pandas.TimeSeries(self.results.index.values).value_counts()
+        occurrences = pandas.Series(self.results.index.values).value_counts()
         occurrences = occurrences.reindex(actions).fillna(0)
 
         #calculate the weighted average for each of the metrics (i.e. actions that occur more often have a higher
